@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Unsere Kommunikationshilfe</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f4ed;color:#222;font-family:Arial,sans-serif}
+header{background:#39756f;color:#fff;text-align:center;padding:16px;font-size:clamp(25px,5vw,42px);font-weight:800}
+main{max-width:1100px;margin:auto;padding:16px}.page{display:none}.page.active{display:block}
+h1{text-align:center;font-size:clamp(28px,5vw,44px);margin:12px 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}@media(min-width:800px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:#fff;border:3px solid #d6d0c5;border-radius:20px;min-height:145px;padding:12px;font-size:clamp(19px,3vw,28px);font-weight:800;cursor:pointer}
+.card:active{transform:scale(.97)}.icon{display:block;font-size:clamp(48px,7vw,70px);margin-bottom:7px}
+.section{background:#fff;border-radius:20px;padding:14px;margin-bottom:15px;border:2px solid #ddd5c8}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:12px}.menu button{min-height:100px}
+.back{background:#39756f;color:white;border:0}.urgent{border-color:#e26b61;background:#fff5f3}
+.yes{border-color:#68a75d}.no{border-color:#df7770}
+.result{background:#fff5cf;border:3px solid #d6b43d;border-radius:18px;padding:20px;font-size:clamp(22px,3.5vw,32px);line-height:1.45}
+.note{text-align:center;font-size:15px;color:#666;margin-top:16px}
+</style>
+</head>
+<body>
+<header>❤️ UNSERE KOMMUNIKATIONSHILFE</header>
+<main>
+
+<section id="home" class="page active">
+<h1>Was möchtest du mitteilen?</h1>
+<div class="menu">
+<button class="card" onclick="show('needs')"><span class="icon">🏠</span>NORMALE BEDÜRFNISSE</button>
+<button class="card urgent" onclick="show('health')"><span class="icon">🩺</span>GESUNDHEIT / SCHMERZEN</button>
+</div>
+<div class="note">Einfach auf ein Bild tippen. Das Tablet spricht die Auswahl vor.</div>
+</section>
+
+<section id="needs" class="page">
+<h1>Was möchtest du?</h1>
+<div class="grid">
+<button class="card" onclick="speak('Ich möchte etwas trinken.')"><span class="icon">🥤</span>TRINKEN</button>
+<button class="card" onclick="speak('Ich möchte etwas essen.')"><span class="icon">🍽️</span>ESSEN</button>
+<button class="card" onclick="speak('Ich muss zur Toilette.')"><span class="icon">🚽</span>TOILETTE</button>
+<button class="card" onclick="speak('Ich brauche meine Medikamente.')"><span class="icon">💊</span>MEDIKAMENTE</button>
+<button class="card" onclick="speak('Mir ist zu warm.')"><span class="icon">🥵</span>ZU WARM</button>
+<button class="card" onclick="speak('Mir ist zu kalt.')"><span class="icon">🥶</span>ZU KALT</button>
+<button class="card" onclick="speak('Ich möchte Ruhe.')"><span class="icon">🛏️</span>RUHE</button>
+<button class="card" onclick="speak('Ich möchte schlafen.')"><span class="icon">😴</span>SCHLAFEN</button>
+<button class="card" onclick="speak('Ich brauche Hilfe beim Aufstehen.')"><span class="icon">🧍</span>AUFSTEHEN / HILFE</button>
+<button class="card" onclick="speak('Ich möchte frische Luft.')"><span class="icon">🌳</span>FRISCHE LUFT</button>
+<button class="card" onclick="speak('Ich möchte fernsehen.')"><span class="icon">📺</span>FERNSEHEN</button>
+<button class="card" onclick="speak('Ich möchte Musik hören.')"><span class="icon">🎵</span>MUSIK</button>
+<button class="card" onclick="speak('Ich möchte meine Angehörigen sehen oder sprechen.')"><span class="icon">👨‍👩‍👧</span>ANGEHÖRIGE</button>
+<button class="card" onclick="speak('Ich möchte Nähe oder Händchen halten.')"><span class="icon">🤝</span>NÄHE / HALTEN</button>
+<button class="card" onclick="speak('Ich möchte beschäftigt werden.')"><span class="icon">🧩</span>BESCHÄFTIGUNG</button>
+<button class="card" onclick="speak('Bitte helfen Sie mir.')"><span class="icon">🆘</span>HILFE</button>
+<button class="card yes" onclick="speak('Ja.')"><span class="icon">👍</span>JA</button>
+<button class="card no" onclick="speak('Nein.')"><span class="icon">👎</span>NEIN</button>
+<button class="card" onclick="speak('Ich möchte etwas anderes.')"><span class="icon">❓</span>ETWAS ANDERES</button>
+</div>
+<div class="menu" style="margin-top:14px"><button class="card back" onclick="show('home')">🏠 START</button><button class="card urgent" onclick="show('health')">🩺 GESUNDHEIT</button></div>
+</section>
+
+<section id="health" class="page">
+<h1>Gesundheit – was ist los?</h1>
+<div class="grid">
+<button class="card urgent" onclick="show('breath')"><span class="icon">😮‍💨</span>ATEMNOT</button>
+<button class="card" onclick="startPain()"><span class="icon">🤕</span>SCHMERZEN</button>
+<button class="card" onclick="speak('Ich habe viel Sekret oder Schleim.')"><span class="icon">💧</span>VIEL SEKRET</button>
+<button class="card" onclick="speak('Das Sekret sitzt fest.')"><span class="icon">🫁</span>SEKRET SITZT FEST</button>
+<button class="card" onclick="speak('Ich muss stark husten.')"><span class="icon">😷</span>HUSTEN</button>
+<button class="card" onclick="speak('Mir ist übel.')"><span class="icon">🤢</span>ÜBELKEIT</button>
+<button class="card" onclick="speak('Mir ist schwindelig.')"><span class="icon">😵</span>SCHWINDEL</button>
+<button class="card" onclick="speak('Ich fühle mich sehr schlecht.')"><span class="icon">🆘</span>SEHR SCHLECHT</button>
+</div>
+<div class="menu" style="margin-top:14px"><button class="card back" onclick="show('home')">🏠 START</button><button class="card" onclick="show('needs')">🏠 BEDÜRFNISSE</button></div>
+</section>
+
+<section id="breath" class="page">
+<h1>😮‍💨 Atemnot</h1>
+<div class="section"><div class="result">Bei akuter Atemnot bitte nicht erst die App abarbeiten. Sofort nach eurem Tracheostoma- und Notfallstandard handeln.</div></div>
+<div class="grid">
+<button class="card urgent" onclick="speak('Ich bekomme schlecht Luft.')"><span class="icon">😮‍💨</span>SCHLECHT LUFT</button>
+<button class="card" onclick="speak('Ich brauche Hilfe.')"><span class="icon">🆘</span>HILFE</button>
+<button class="card" onclick="speak('Ich habe viel Sekret.')"><span class="icon">💧</span>VIEL SEKRET</button>
+<button class="card" onclick="speak('Das Sekret sitzt fest.')"><span class="icon">🫁</span>SEKRET SITZT FEST</button>
+<button class="card" onclick="speak('Ich muss husten.')"><span class="icon">😷</span>HUSTEN</button>
+<button class="card" onclick="speak('Ich habe Angst.')"><span class="icon">😟</span>ANGST</button>
+</div>
+<div class="menu" style="margin-top:14px"><button class="card back" onclick="show('health')">⬅️ ZURÜCK</button><button class="card" onclick="show('home')">🏠 START</button></div>
+</section>
+
+<section id="pain" class="page">
+<h1>Wo tut es weh?</h1>
+<div class="grid">
+<button class="card" onclick="painPick('Ort','Kopf / Gesicht')"><span class="icon">🤕</span>KOPF / GESICHT</button>
+<button class="card" onclick="painPick('Ort','Hals')"><span class="icon">😣</span>HALS</button>
+<button class="card" onclick="painPick('Ort','Brust')"><span class="icon">❤️</span>BRUST</button>
+<button class="card" onclick="painPick('Ort','Bauch')"><span class="icon">🫃</span>BAUCH</button>
+<button class="card" onclick="painPick('Ort','Rücken')"><span class="icon">🔙</span>RÜCKEN</button>
+<button class="card" onclick="painPick('Ort','Arm / Hand')"><span class="icon">🖐️</span>ARM / HAND</button>
+<button class="card" onclick="painPick('Ort','Hüfte')"><span class="icon">🦴</span>HÜFTE</button>
+<button class="card" onclick="painPick('Ort','Knie / Bein')"><span class="icon">🦵</span>KNIE / BEIN</button>
+<button class="card" onclick="painPick('Ort','Fuß')"><span class="icon">🦶</span>FUSS</button>
+</div></section>
+
+<section id="pain2" class="page"><h1>Wie stark?</h1><div class="grid">
+<button class="card" onclick="painPick('Stärke','leicht')"><span class="icon">🙂</span>LEICHT</button>
+<button class="card" onclick="painPick('Stärke','mittel')"><span class="icon">😐</span>MITTEL</button>
+<button class="card" onclick="painPick('Stärke','stark')"><span class="icon">😣</span>STARK</button>
+<button class="card" onclick="painPick('Stärke','sehr stark')"><span class="icon">😖</span>SEHR STARK</button>
+<button class="card" onclick="painPick('Stärke','unerträglich')"><span class="icon">😭</span>UNERTRÄGLICH</button>
+</div></section>
+
+<section id="pain3" class="page"><h1>Wie fühlt es sich an?</h1><div class="grid">
+<button class="card" onclick="painPick('Art','stechend')"><span class="icon">⚡</span>STECHEND</button>
+<button class="card" onclick="painPick('Art','brennend')"><span class="icon">🔥</span>BRENNEND</button>
+<button class="card" onclick="painPick('Art','drückend')"><span class="icon">🪨</span>DRÜCKEND</button>
+<button class="card" onclick="painPick('Art','pochend')"><span class="icon">💓</span>POCHEND</button>
+<button class="card" onclick="painPick('Art','krampfartig')"><span class="icon">🌀</span>KRAMPFARTIG</button>
+<button class="card" onclick="painPick('Art','wund')"><span class="icon">🩹</span>WUND</button>
+</div></section>
+
+<section id="pain4" class="page"><h1>Seit wann?</h1><div class="grid">
+<button class="card" onclick="painPick('Zeit','gerade erst')"><span class="icon">🕐</span>GERADE ERST</button>
+<button class="card" onclick="painPick('Zeit','seit heute')"><span class="icon">🌅</span>SEIT HEUTE</button>
+<button class="card" onclick="painPick('Zeit','seit heute Nacht')"><span class="icon">🌙</span>SEIT HEUTE NACHT</button>
+<button class="card" onclick="painPick('Zeit','seit einigen Tagen')"><span class="icon">📅</span>SEIT EINIGEN TAGEN</button>
+<button class="card" onclick="painPick('Zeit','schon länger')"><span class="icon">⏳</span>SCHON LÄNGER</button>
+</div></section>
+
+<section id="pain5" class="page"><h1>Was macht den Schmerz?</h1><div class="grid">
+<button class="card" onclick="painFinish('Bewegung macht es schlimmer')"><span class="icon">🚶</span>BEWEGUNG SCHLIMMER</button>
+<button class="card" onclick="painFinish('Ruhe macht es besser')"><span class="icon">🛏️</span>RUHE BESSER</button>
+<button class="card" onclick="painFinish('Berührung macht es schlimmer')"><span class="icon">🤲</span>BERÜHRUNG SCHLIMMER</button>
+<button class="card" onclick="painFinish('Wärme hilft')"><span class="icon">🔥</span>WÄRME HILFT</button>
+<button class="card" onclick="painFinish('Kälte hilft')"><span class="icon">❄️</span>KÄLTE HILFT</button>
+<button class="card" onclick="painFinish('Ich weiß es nicht')"><span class="icon">❓</span>WEISS ICH NICHT</button>
+</div></section>
+
+<section id="result" class="page"><h1>Das wurde ausgewählt</h1><div id="resultText" class="result"></div>
+<div class="grid"><button class="card" onclick="speak(document.getElementById('resultText').innerText)"><span class="icon">🔊</span>VORLESEN</button>
+<button class="card back" onclick="show('home')"><span class="icon">🏠</span>START</button></div></section>
+
+</main>
+<script>
+let pain={};
+function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function speak(text){if(!('speechSynthesis' in window)){alert(text);return} speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.86;speechSynthesis.speak(u)}
+function startPain(){pain={};show('pain')}
+function painPick(k,v){pain[k]=v;speak(v);if(k==='Ort')show('pain2');else if(k==='Stärke')show('pain3');else if(k==='Art')show('pain4');}
+function painFinish(v){pain.Auslöser=v;let t='Ich habe Schmerzen';if(pain.Ort)t+=' im Bereich '+pain.Ort;if(pain.Stärke)t+=', die '+pain.Stärke+' sind';if(pain.Art)t+=' und sich '+pain.Art+' anfühlen';if(pain.Zeit)t+=' und '+pain.Zeit+' bestehen';t+='.';if(v)t+=' '+v+'.';document.getElementById('resultText').innerText=t;show('result');speak(t)}
+</script>
+</body></html>
