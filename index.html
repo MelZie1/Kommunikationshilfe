@@ -4,153 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unsere Kommunikationshilfe</title>
+<title>Kommunikationshilfe</title>
 
 <style>
 *{
   box-sizing:border-box;
 }
 
-html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;
-}
-
 body{
+  margin:0;
   font-family:Arial,Helvetica,sans-serif;
   background:#f7f6f2;
   color:#111;
 }
 
 header{
-  width:100%;
   background:#397d76;
   color:white;
   text-align:center;
-  padding:28px 15px 32px;
+  padding:28px 15px;
 }
 
 .logo{
   font-size:64px;
   line-height:1;
-  margin-bottom:12px;
 }
 
 header h1{
-  margin:0;
-  font-size:34px;
-  line-height:1.15;
+  margin:10px 0 0;
+  font-size:38px;
   font-weight:800;
 }
 
 main{
-  width:100%;
   max-width:900px;
-  margin:0 auto;
-  padding:35px 18px 50px;
+  margin:auto;
+  padding:30px 18px;
 }
 
-h2{
+.intro{
   text-align:center;
-  margin:0 0 28px;
-  font-size:30px;
-  line-height:1.2;
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:30px;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:18px;
+  gap:16px;
 }
 
-.card{
+button{
+  border:0;
+  border-radius:22px;
   background:white;
-  border:3px solid #d8d6ce;
-  border-radius:28px;
-  padding:25px 18px;
+  padding:22px 12px;
+  min-height:130px;
+  font-size:24px;
+  font-weight:bold;
+  box-shadow:0 3px 10px rgba(0,0,0,.12);
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(.97);
+}
+
+.emoji{
+  display:block;
+  font-size:48px;
+  margin-bottom:8px;
+}
+
+.speech{
+  margin-top:25px;
+  background:#397d76;
+  color:white;
+  width:100%;
+  min-height:75px;
+  font-size:25px;
+}
+
+.output{
+  margin-top:20px;
+  background:white;
+  border-radius:20px;
+  padding:20px;
   text-align:center;
-  min-height:190px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-decoration:none;
-  color:#111;
-  box-shadow:0 3px 8px rgba(0,0,0,.08);
-}
-
-.card:active{
-  transform:scale(.98);
-}
-
-.icon{
-  font-size:65px;
-  line-height:1;
-  margin-bottom:15px;
-}
-
-.card h3{
-  margin:0;
   font-size:27px;
-  font-weight:800;
-}
-
-.info{
-  margin-top:30px;
-  text-align:center;
-  color:#666;
-  font-size:20px;
-  line-height:1.4;
+  font-weight:bold;
+  min-height:70px;
+  box-shadow:0 3px 10px rgba(0,0,0,.10);
 }
 
 footer{
   text-align:center;
-  padding:20px;
-  color:#777;
-  font-size:16px;
+  padding:25px;
+  color:#666;
 }
 
-@media (max-width:600px){
-
-  header{
-    padding:25px 10px 30px;
-  }
-
-  .logo{
-    font-size:58px;
-  }
-
+@media(max-width:600px){
   header h1{
-    font-size:32px;
+    font-size:30px;
   }
 
-  main{
-    padding:30px 14px 40px;
-  }
-
-  h2{
-    font-size:28px;
-    margin-bottom:24px;
+  .intro{
+    font-size:23px;
   }
 
   .grid{
-    grid-template-columns:1fr;
-    gap:16px;
+    grid-template-columns:1fr 1fr;
   }
 
-  .card{
-    min-height:165px;
-    padding:22px 15px;
+  button{
+    min-height:125px;
+    font-size:20px;
   }
 
-  .icon{
-    font-size:58px;
-  }
-
-  .card h3{
-    font-size:25px;
+  .emoji{
+    font-size:42px;
   }
 }
 </style>
@@ -160,66 +133,126 @@ footer{
 
 <header>
   <div class="logo">❤️</div>
-  <h1>UNSERE<br>KOMMUNIKATIONSHILFE</h1>
+  <h1>UNSERE KOMMUNIKATIONSHILFE</h1>
 </header>
 
 <main>
 
-  <h2>Was möchtest du<br>mitteilen?</h2>
+  <div class="intro">
+    Was möchtest du mitteilen?
+  </div>
 
   <div class="grid">
 
-    <a class="card" href="#">
-      <div class="icon">🏠</div>
-      <h3>HAUSHALT</h3>
-    </a>
+    <button onclick="sprechen('Ich möchte nach Hause.')">
+      <span class="emoji">🏠</span>
+      Nach Hause
+    </button>
 
-    <a class="card" href="#">
-      <div class="icon">🧹</div>
-      <h3>ORDNUNG</h3>
-    </a>
+    <button onclick="sprechen('Ich habe Hunger.')">
+      <span class="emoji">🍽️</span>
+      Hunger
+    </button>
 
-    <a class="card" href="#">
-      <div class="icon">🔊</div>
-      <h3>LAUTSTÄRKE</h3>
-    </a>
+    <button onclick="sprechen('Ich habe Durst.')">
+      <span class="emoji">🥤</span>
+      Durst
+    </button>
 
-    <a class="card" href="#">
-      <div class="icon">🕐</div>
-      <h3>RUHEZEIT</h3>
-    </a>
+    <button onclick="sprechen('Ich muss zur Toilette.')">
+      <span class="emoji">🚽</span>
+      Toilette
+    </button>
 
-    <a class="card" href="#">
-      <div class="icon">💶</div>
-      <h3>GELD</h3>
-    </a>
+    <button onclick="sprechen('Ich brauche Hilfe.')">
+      <span class="emoji">🆘</span>
+      Hilfe
+    </button>
 
-    <a class="card" href="#">
-      <div class="icon">🛒</div>
-      <h3>EINKAUF</h3>
-    </a>
+    <button onclick="sprechen('Ich habe Schmerzen.')">
+      <span class="emoji">🤕</span>
+      Schmerzen
+    </button>
 
-    <a class="card" href="#">
-      <div class="icon">👥</div>
-      <h3>BESUCH</h3>
-    </a>
+    <button onclick="sprechen('Mir geht es gut.')">
+      <span class="emoji">😊</span>
+      Gut
+    </button>
 
-    <a class="card" href="#">
-      <div class="icon">💬</div>
-      <h3>SONSTIGES</h3>
-    </a>
+    <button onclick="sprechen('Mir geht es nicht gut.')">
+      <span class="emoji">😟</span>
+      Nicht gut
+    </button>
+
+    <button onclick="sprechen('Ja.')">
+      <span class="emoji">👍</span>
+      Ja
+    </button>
+
+    <button onclick="sprechen('Nein.')">
+      <span class="emoji">👎</span>
+      Nein
+    </button>
+
+    <button onclick="sprechen('Ich möchte etwas trinken.')">
+      <span class="emoji">💧</span>
+      Trinken
+    </button>
+
+    <button onclick="sprechen('Ich möchte etwas essen.')">
+      <span class="emoji">🍎</span>
+      Essen
+    </button>
 
   </div>
 
-  <div class="info">
-    Gemeinsam sprechen. Gemeinsam Lösungen finden.
+  <div id="ausgabe" class="output">
+    Wähle eine Aussage aus.
   </div>
+
+  <button class="speech" onclick="nochmalSprechen()">
+    🔊 Nochmal vorlesen
+  </button>
 
 </main>
 
 <footer>
-  Unsere WG-Kommunikationshilfe ❤️
+  Unsere Kommunikationshilfe ❤️
 </footer>
+
+<script>
+
+let letzterText = "";
+
+function sprechen(text){
+
+  letzterText = text;
+
+  document.getElementById("ausgabe").textContent = text;
+
+  if("speechSynthesis" in window){
+
+    window.speechSynthesis.cancel();
+
+    const stimme = new SpeechSynthesisUtterance(text);
+
+    stimme.lang = "de-DE";
+    stimme.rate = 0.9;
+    stimme.pitch = 1;
+
+    window.speechSynthesis.speak(stimme);
+  }
+}
+
+function nochmalSprechen(){
+
+  if(letzterText !== ""){
+    sprechen(letzterText);
+  }
+
+}
+
+</script>
 
 </body>
 </html>
